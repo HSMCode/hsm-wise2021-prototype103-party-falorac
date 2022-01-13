@@ -5,6 +5,7 @@ using UnityEngine;
 public class DisguiseController : MonoBehaviour
 {
     public float speed = 15f;
+    public int disguiseQuality;
 
     // Update is called once per frame
     void Update()
@@ -14,8 +15,6 @@ public class DisguiseController : MonoBehaviour
 
     /*
     to do:
-    - different disguises 
-    - slot restraint, only one disguise per slot
-    - disguise "meter/level" to give "shield" to player
+    - slot restraint, only one disguise per slot?
     */
 }
