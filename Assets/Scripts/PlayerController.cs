@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour
     public Slider disguisePercentageUI;
     public TMP_Text disguiseText;
 
+    // variable to check if there is a disguise around player
+    private bool canPickUp = false;
+    private GameObject currentPickUp;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +26,40 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (canPickUp && Input.GetKeyDown(KeyCode.Space)) {
+            // add disguise's quality value to disguise percentage (and UI)
+            disguisePercentage += currentPickUp.GetComponent<DisguiseController>().disguiseQuality;
+
+            // don't overstep range of 0 to 100 percent
+            if (disguisePercentage < 100) {
+                disguisePercentageUI.value = disguisePercentage;
+            } else {
+                disguisePercentage = 100;
+                disguisePercentageUI.value = disguisePercentage;
+            }
+
+            // add +1 to current disguise's counter in GameOver-Script
+            switch (currentPickUp.GetComponent<DisguiseController>().disguiseQuality) {
+                case 20:
+                gameObject.GetComponent<GameOver>().countDisguises[0]++;
+                break;
+                case 30:
+                gameObject.GetComponent<GameOver>().countDisguises[1]++;
+                break;
+                case 40:
+                gameObject.GetComponent<GameOver>().countDisguises[2]++;
+                break;
+                case 50:
+                gameObject.GetComponent<GameOver>().countDisguises[3]++;
+                break;
+            }
+
+            // destroy disguise and reset because it got picked up
+            Destroy(currentPickUp);
+            canPickUp = false;
+            Debug.Log("No Pickup");
+        }
+
         // give different hints in UI depending on disguise quality
         switch (disguisePercentage) {
             case 0:
@@ -45,43 +83,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other) {
-        // condition to hold space when colliding with a disguise
-        if (other.tag == "Disguise" && Input.GetKey(KeyCode.Space)) {
-            // add disguise's quality value to disguise percentage (and UI)
-            disguisePercentage += other.GetComponent<DisguiseController>().disguiseQuality;
-
-            // don't overstep range of 0 to 100 percent
-            if (disguisePercentage < 100) {
-                disguisePercentageUI.value = disguisePercentage;
-            } else {
-                disguisePercentage = 100;
-                disguisePercentageUI.value = disguisePercentage;
-            }
-
-            // add +1 to current disguise's counter in GameOver-Script
-            switch (other.GetComponent<DisguiseController>().disguiseQuality) {
-                case 20:
-                gameObject.GetComponent<GameOver>().countDisguises[0]++;
-                break;
-                case 30:
-                gameObject.GetComponent<GameOver>().countDisguises[1]++;
-                break;
-                case 40:
-                gameObject.GetComponent<GameOver>().countDisguises[2]++;
-                break;
-                case 50:
-                gameObject.GetComponent<GameOver>().countDisguises[3]++;
-                break;
-            }
-
-            // destroy disguise because it got picked up
-            Destroy(other.gameObject);
-        }
-    }
-
     private void OnTriggerEnter(Collider other) {
-         if (other.tag == "Enemy") {
+        if (other.tag == "Disguise") {
+            canPickUp = true;
+            currentPickUp = other.gameObject;
+            Debug.Log("Pickup");
+        }
+        else if (other.tag == "Enemy") {
             // set the detectionPercentage depending on value of enemy type
             detectionPercentage = other.GetComponent<EnemyController>().detectionAbility;
 
@@ -97,6 +105,13 @@ public class PlayerController : MonoBehaviour
                 disguisePercentageUI.value = disguisePercentage;
                 gameObject.GetComponent<GameOver>().EndGame(false);
             }
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.tag == "Disguise") {
+            canPickUp = false;
+            Debug.Log("No Pickup");
         }
     }
 }

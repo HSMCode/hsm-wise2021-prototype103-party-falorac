@@ -88,7 +88,11 @@ public class GameOver : MonoBehaviour
             description.text = "You made it! Lorem ipsum dolor sit amet, asdlfjwpaoeirfjaösifjaöliwerjföowsef";
         } else {
             // calculate how far the player got this time
-            float howFarDidIGet = (1 - (countDown/counter)) * 100;
+            int howFarDidIGet = Mathf.RoundToInt((1 - (countDown/counter)) * 100);
+            // make sure that player does not get 100 percent when he's close to the finish line and dies
+            if (howFarDidIGet == 100) {
+                howFarDidIGet = 99;
+            }
 
             // UI text
             title.text = "Game Over (" + howFarDidIGet + "%)";
