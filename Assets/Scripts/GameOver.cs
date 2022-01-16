@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameOver : MonoBehaviour
 {
     // internal countdown until end of level is reached and goal to reach
-    private float counter = 30f;
+    private float counter = 5f;
     private float countDown;
     public GameObject goal;
     
@@ -21,6 +21,8 @@ public class GameOver : MonoBehaviour
     public TMP_Text description;
     public TMP_Text[] disguisesCounted = new TMP_Text[4];
     public Button restartButton;
+    public AudioClip winningClip;
+    public AudioClip losingClip;
     public bool won = false;
 
     // Start is called before the first frame update
@@ -59,14 +61,14 @@ public class GameOver : MonoBehaviour
         GameObject spawnPoint = GameObject.FindWithTag("SpawnPoint");
         spawnPoint.GetComponent<Spawning>().StopInvoke();
 
-        // wait for 2 seconds
-        yield return new WaitForSeconds(2);
+        // wait 4 seconds
+        yield return new WaitForSeconds(4);
 
         // instanciate goal aka the end of the level to walk towards player
         GameObject goalInstance = Instantiate(goal, spawnPoint.transform.position, Quaternion.identity, spawnPoint.gameObject.transform);
 
-        // wait for 5 seconds
-        yield return new WaitForSeconds(5);
+        // wait for 8 seconds
+        yield return new WaitForSeconds(8);
 
         // end the game
         EndGame(true);
@@ -81,11 +83,17 @@ public class GameOver : MonoBehaviour
             disguisesCounted[i].text = "x" + countDisguises[i];
         }
 
+        // assign variable for AudioClip that gets chosen based on winning/losing
+        AudioClip gameOverSound;
+
         // enable different UI content depending on winning or losing
         if (won) {
             // UI text
             title.text = "Win (100%)";
-            description.text = "You made it! Lorem ipsum dolor sit amet, asdlfjwpaoeirfjaösifjaöliwerjföowsef";
+            description.text = "You made it! Well ... she didn't look appalled but I don't know if she even noticed you? \n" + 
+            "You could always try to work on your dance routine and risk some bolder moves - that'll get her attention, I'm sure of it!";
+            // audio clip
+            gameOverSound = winningClip;
         } else {
             // calculate how far the player got this time
             int howFarDidIGet = Mathf.RoundToInt((1 - (countDown/counter)) * 100);
@@ -96,12 +104,18 @@ public class GameOver : MonoBehaviour
 
             // UI text
             title.text = "Game Over (" + howFarDidIGet + "%)";
-            description.text = "Oh no, you got caught! This way, they will never notice you :( \n" +
-            "Maybe you should try to find better disguises next time.";
+            description.text = "Well, I suppose you got in, so that's something? \n" + 
+            "About your darling: I think I saw her cuddling with a PURPLE fellow, so you might wanna hurry up. \n" + 
+            "Also, try to look more inconspicuous next time!";
+            // audio clip
+            gameOverSound = losingClip;
         }
 
         // activate GameOver UI
         gameOverUI.SetActive(true);
+        // switch from music to win/lose sound
+        GameObject.Find("crystalBall").GetComponentInChildren<AudioSource>().Stop();
+        gameObject.GetComponent<AudioSource>().PlayOneShot(gameOverSound);
     }
 
     public void ReloadScene() {

@@ -54,40 +54,37 @@ public class PlayerController : MonoBehaviour
                 break;
             }
 
+            // send message to disguise -> emit particles (number)
+            currentPickUp.SendMessage("OnPickupEmitParticles", 5);
+
             // destroy disguise and reset because it got picked up
             Destroy(currentPickUp);
             canPickUp = false;
-            Debug.Log("No Pickup");
         }
 
         // give different hints in UI depending on disguise quality
-        switch (disguisePercentage) {
-            case 0:
-            disguiseText.text = "Quick, get yourself a disguise!";
-            break;
-            case 20:
-            disguiseText.text = "That's not going to be enough!";
-            break;
-            case 40: 
-            disguiseText.text = "They might not notice you!";
-            break;
-            case 60:
-            disguiseText.text = "You almost blend in with the crowd!";
-            break;
-            case 80:
-            disguiseText.text = "Great, this way you're going to get far!";
-            break;
-            case 100:
-            disguiseText.text = "Amazing, no one will detect you!";
-            break;
+        if (disguisePercentage > 80) {
+            disguiseText.text = "Excellent";
+        } else if (disguisePercentage > 50) {
+            disguiseText.text = "Good";
+        } else if (disguisePercentage > 20) {
+            disguiseText.text = "Acceptable";
+        } else {
+            disguiseText.text = "Shabby";
         }
+    }
+
+    // alternate dance routine when player gets to the end
+    public void SwitchDanceRoutine() {
+        AudioSource wooSound = gameObject.GetComponent<AudioSource>();
+        wooSound.PlayOneShot(wooSound.clip);
+        gameObject.GetComponentInChildren<Animator>().SetTrigger("EndPose");
     }
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Disguise") {
             canPickUp = true;
             currentPickUp = other.gameObject;
-            Debug.Log("Pickup");
         }
         else if (other.tag == "Enemy") {
             // set the detectionPercentage depending on value of enemy type
@@ -98,6 +95,9 @@ public class PlayerController : MonoBehaviour
             if(disguisePercentage >= detectionPercentage) {
                 disguisePercentage -= detectionPercentage;
                 disguisePercentageUI.value = disguisePercentage;
+
+                // make enemy react (a little bit) and play heartbeat
+                other.SendMessage("ShowAnger");
             } 
             // if no, end game
             else {
@@ -111,7 +111,6 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerExit(Collider other) {
         if (other.tag == "Disguise") {
             canPickUp = false;
-            Debug.Log("No Pickup");
         }
     }
 }

@@ -100,6 +100,4 @@ details
 
 ## Acknowledgments
 
-  - Hat tip to anyone whose code was used
-  - Inspiration
-  - etc
+  - Sound effects & Music Tracks - https://mixkit.co
