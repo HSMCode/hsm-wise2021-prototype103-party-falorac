@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b78466b5446345249bd74f3970cf13fa
+guid: d97a7cdec5d92d440a562d321b498455
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Raleway
+  - LT Wave
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

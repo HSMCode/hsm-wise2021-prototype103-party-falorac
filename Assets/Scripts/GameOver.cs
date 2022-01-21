@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameOver : MonoBehaviour
 {
     // internal countdown until end of level is reached and goal to reach
-    private float counter = 5f;
+    private float counter = 25f;
     private float countDown;
     public GameObject goal;
     

@@ -2616,8 +2616,8 @@ MonoBehaviour:
     Wishing good luck next time and adding
     flavor by repeating goal of the game (to get to VIP person).'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6e2f6bdb0869ad24288a37ac7e34b67a, type: 2}
-  m_sharedMaterial: {fileID: -8117573777980394989, guid: 6e2f6bdb0869ad24288a37ac7e34b67a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9a971144847171847b84880b9a464378, type: 2}
+  m_sharedMaterial: {fileID: 1956043291577886400, guid: 9a971144847171847b84880b9a464378, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2641,8 +2641,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

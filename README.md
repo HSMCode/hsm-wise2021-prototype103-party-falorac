@@ -101,3 +101,4 @@ details
 ## Acknowledgments
 
   - Sound effects & Music Tracks - https://mixkit.co
+  - Fonts - https://dafont.com
