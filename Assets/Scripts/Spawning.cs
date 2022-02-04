@@ -44,9 +44,4 @@ public class Spawning : MonoBehaviour
         Debug.Log("Spawning stopped.");
         CancelInvoke();
     }
-
-    /*
-    to do:
-    - randomize spawning interval
-    */
 }

@@ -7,6 +7,9 @@ using UnityEngine;
 public class ManageScenes : MonoBehaviour
 {
     public Button startButton;
+    public Button creditsButton;
+    public Button returnButton;
+    public GameObject creditsUI;
 
     
     // Start is called before the first frame update
@@ -14,10 +17,23 @@ public class ManageScenes : MonoBehaviour
     {
         // add listener for play button
         startButton.onClick.AddListener(PlayGame);
+        
+        // add listener script to credits button
+        creditsButton.onClick.AddListener(ShowCredits);
+
+        // add listener script to return button
+        returnButton.onClick.AddListener(HideCredits);
     }
 
-    public void PlayGame() {
+    private void PlayGame() {
         SceneManager.LoadScene("PartyGame");
-        Debug.Log("Play Game");
+    }
+
+
+    public void ShowCredits() {
+        creditsUI.SetActive(true);
+    }    
+    public void HideCredits() {
+        creditsUI.SetActive(false);
     }
 }

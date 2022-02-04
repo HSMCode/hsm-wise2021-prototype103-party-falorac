@@ -47,5 +47,6 @@ details
 
 ## Acknowledgments
 
+  - Animations: https://mixamo.com
   - Sound effects & Music Tracks - https://mixkit.co
   - Fonts - https://dafont.com

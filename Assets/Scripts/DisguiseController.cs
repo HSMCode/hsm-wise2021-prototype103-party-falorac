@@ -29,9 +29,4 @@ public class DisguiseController : MonoBehaviour
         // destroy particle system instance
         Destroy(sparkles, 1);
     }
-
-    /*
-    to do:
-    - slot restraint, only one disguise per slot?
-    */
 }
