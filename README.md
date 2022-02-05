@@ -1,6 +1,6 @@
 # Not Quite Welcome
 
-This project was imported using the **Unity 2020.3.x** empty base project.
+This project was imported using the **Unity 2020.3.18f1** empty base project.
 
 You won't believe it: I just saw your darling entering the club! 
 Be careful, **security is alert** and you are not invited, so you will have to pick up some **disguises** in order to get to her unnoticed.

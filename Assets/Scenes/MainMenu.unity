@@ -2049,7 +2049,9 @@ MonoBehaviour:
     <b>Animations</b> -
     Mixamo.com
 
-    <b>Music and Sounds</b> - Mixkit.co'
+    <b>Music and Sounds</b> - Mixkit.co
+
+    <b>Fonts</b> - Dafont.com'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9a971144847171847b84880b9a464378, type: 2}
   m_sharedMaterial: {fileID: 1956043291577886400, guid: 9a971144847171847b84880b9a464378, type: 2}
