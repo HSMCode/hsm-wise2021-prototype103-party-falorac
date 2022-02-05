@@ -76,9 +76,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
-  detectionAbility: 30
+  detectionAbility: 35
   angryPS: {fileID: 3883919129685058562, guid: cd4707afb1ab3ee419c48edc71bf7717, type: 3}
-  heartBeat: {fileID: 8300000, guid: 6ee45574245fede43a12c99facaa3137, type: 3}
 --- !u!1001 &6593057880194617546
 PrefabInstance:
   m_ObjectHideFlags: 0

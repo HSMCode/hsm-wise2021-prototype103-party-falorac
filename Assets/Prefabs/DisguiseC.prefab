@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  disguiseQuality: 40
+  disguiseQuality: 35
   sparklesPS: {fileID: 2754273498583798892, guid: f43d108b239cefe44b9bb37c68b03d64, type: 3}
 --- !u!1001 &6937196991962348998
 PrefabInstance:

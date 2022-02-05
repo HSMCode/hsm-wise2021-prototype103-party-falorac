@@ -1779,7 +1779,7 @@ MonoBehaviour:
   - {fileID: 2444119298728702337, guid: 4f3ae7c8b8f91214ba3564c62d2ff464, type: 3}
   - {fileID: 2444119298728702337, guid: 0297635c73a03c748a4026be8912cba6, type: 3}
   delayEnemies: 5.5
-  intervalEnemies: 2.7
+  intervalEnemies: 2
   disguise:
   - {fileID: 4322622195210862989, guid: ec29f7c8e5a69fa439a185321e119589, type: 3}
   - {fileID: 4322622195210862989, guid: 07a7dc2ff0a3e7d48984c3ecd3aa3291, type: 3}

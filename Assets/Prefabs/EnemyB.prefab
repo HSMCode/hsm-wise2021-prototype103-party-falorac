@@ -78,7 +78,6 @@ MonoBehaviour:
   speed: 12
   detectionAbility: 30
   angryPS: {fileID: 3883919129685058562, guid: cd4707afb1ab3ee419c48edc71bf7717, type: 3}
-  heartBeat: {fileID: 8300000, guid: 6ee45574245fede43a12c99facaa3137, type: 3}
 --- !u!1001 &420460531950955142
 PrefabInstance:
   m_ObjectHideFlags: 0
